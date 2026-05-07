@@ -1,0 +1,105 @@
+:root {
+	color-scheme: light;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	color: #0f172a;
+	background:
+		radial-gradient(1200px 500px at 10% -20%, #e0f2fe, transparent 65%),
+		radial-gradient(1000px 420px at 95% 0%, #fef3c7, transparent 60%),
+		linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+.page {
+	width: min(1100px, 94vw);
+	margin: 0 auto;
+	padding: 2rem 0 2.4rem;
+	display: grid;
+	gap: 1rem;
+}
+
+.hero {
+	display: grid;
+	gap: 0.35rem;
+}
+
+.eyebrow {
+	margin: 0;
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #0369a1;
+	font-weight: 700;
+}
+
+.hero h1 {
+	margin: 0;
+	font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+}
+
+.hero p {
+	margin: 0;
+	color: #334155;
+	max-width: 70ch;
+}
+
+.controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}
+
+.controls button {
+	border-radius: 10px;
+	border: 1px solid #cbd5e1;
+	background: #ffffff;
+	color: #0f172a;
+	font: inherit;
+	padding: 0.48rem 0.78rem;
+	cursor: pointer;
+}
+
+.controls button:hover {
+	background: #f8fafc;
+}
+
+.status {
+	margin: 0;
+	color: #334155;
+	font-size: 0.9rem;
+}
+
+smart-dashboard {
+	--sd-font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	--sd-color-surface: #ffffff;
+	--sd-color-surface-border: #dbe4ee;
+	--sd-color-text: #0f172a;
+	--sd-color-muted: #475569;
+	--sd-color-action-bg: #ffffff;
+	--sd-color-action-border: #cbd5e1;
+	--sd-color-action-hover: #f8fafc;
+	--sd-radius-panel: 18px;
+	--sd-grid-gap: 1rem;
+	--sd-grid-columns: repeat(auto-fit, minmax(240px, 1fr));
+	--dg-card-bg: #ffffff;
+	--dg-card-border-color: #dbe4ee;
+	--dg-actions-bg: #ffffff;
+	--dg-actions-border-color: #cbd5e1;
+	--dg-actions-hover-bg: #f8fafc;
+	--dg-card-radius: 14px;
+}
+
+@media (max-width: 720px) {
+	.page {
+		width: min(100%, 94vw);
+		padding-top: 1.2rem;
+	}
+}
+

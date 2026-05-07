@@ -1,0 +1,115 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(15, 23, 42, 0.48);
+  cursor: pointer;
+}
+
+.panel {
+  position: relative;
+  width: min(96vw, 560px);
+  border-radius: var(--sd-radius-modal, 16px);
+  border: 1px solid #dbe4ee;
+  background: #ffffff;
+  box-shadow: 0 30px 50px -28px rgba(2, 6, 23, 0.82);
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+  pointer-events: auto;
+  animation: modalIn 180ms ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.03rem;
+}
+
+.close {
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #ffffff;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+form {
+  display: grid;
+  gap: 0.72rem;
+}
+
+label {
+  display: grid;
+  gap: 0.3rem;
+  color: #334155;
+  font-size: 0.82rem;
+}
+
+input,
+textarea {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font: inherit;
+  padding: 0.55rem 0.62rem;
+}
+
+textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
+.btn {
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  padding: 0.48rem 0.82rem;
+  cursor: pointer;
+}
+
+.btn.primary {
+  border: 0;
+  background: linear-gradient(125deg, #0284c7, #0ea5e9);
+  color: #ffffff;
+}

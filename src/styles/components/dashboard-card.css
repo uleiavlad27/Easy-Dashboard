@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  position: relative;
+  border-radius: var(--dg-card-radius, 14px);
+  border: 1px solid var(--dg-card-border-color, #dbe4ee);
+  background: var(--dg-card-bg, #ffffff);
+  color: var(--dg-color-text, #0f172a);
+  box-shadow: var(--dg-card-shadow, 0 8px 22px -16px rgba(2, 6, 23, 0.6));
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  min-height: 180px;
+  overflow: hidden;
+}
+
+:host(:hover) {
+  transform: translateY(-2px);
+  box-shadow: var(--dg-card-shadow-hover, 0 16px 30px -16px rgba(2, 6, 23, 0.55));
+}
+
+.shell {
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.04rem;
+}
+
+.meta {
+  margin: 0;
+  color: var(--dg-color-muted, #475569);
+  font-size: 0.85rem;
+}
+
+.content {
+  color: var(--dg-color-body, #1e293b);
+  line-height: 1.45;
+  font-size: 0.94rem;
+}
+
+.footer {
+  border-top: 1px dashed var(--dg-divider-color, #e2e8f0);
+  padding-top: 0.55rem;
+  color: var(--dg-color-muted, #475569);
+  font-size: 0.78rem;
+}

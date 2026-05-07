@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  font-family: var(--sd-font-family, "Trebuchet MS", "Segoe UI", sans-serif);
+  color: var(--sd-color-text, #0f172a);
+  --sd-grid-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.shell {
+  background: var(--sd-color-surface, #ffffff);
+  border: 1px solid var(--sd-color-surface-border, #dbe4ee);
+  border-radius: var(--sd-radius-panel, 18px);
+  box-shadow: 0 18px 30px -24px rgba(15, 23, 42, 0.55);
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.meta {
+  margin: 0.25rem 0 0;
+  color: var(--sd-color-muted, #475569);
+  font-size: 0.88rem;
+}
+
+button {
+  border-radius: 10px;
+  border: 1px solid var(--sd-color-action-border, #cbd5e1);
+  font: inherit;
+  padding: 0.5rem 0.8rem;
+  background: var(--sd-color-action-bg, #ffffff);
+  color: var(--sd-color-text, #0f172a);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--sd-color-action-hover, #f8fafc);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: var(--sd-grid-columns);
+  gap: var(--sd-grid-gap, 1rem);
+  align-items: stretch;
+}
+
+.empty {
+  margin: 0;
+  border-radius: 14px;
+  border: 1px dashed var(--sd-color-surface-border, #dbe4ee);
+  padding: 1rem;
+  color: var(--sd-color-muted, #475569);
+  text-align: center;
+  display: none;
+}
+
+:host([empty]) .empty {
+  display: block;
+}
