@@ -3,7 +3,7 @@ import "../src/components/smart-dashboard.js";
 
 export const SmartDashboard = forwardRef(function SmartDashboard(
   {
-    title = "Smart Dashboard",
+    title = "Dashboard component",
     initialCards = [],
     onDashboardUpdated,
     onDashboardAction,

@@ -1,6 +1,6 @@
-# Smart Dashboard Web Component
+# Dashboard Web Component
 
-A simple dashboard component set you can drop into a project without adding a framework.
+A simple dashboard component.
 
 ## Features
 
@@ -20,7 +20,7 @@ A simple dashboard component set you can drop into a project without adding a fr
 
 ## Installation
 
-This project is currently local-first (no npm package publish flow in this repo).
+
 
 Use the component directly from source:
 
@@ -55,9 +55,6 @@ dashboard.addCard({
 });
 ```
 
-Notes:
-- This project demonstrates the programmatic API: use `addCard()` to create and manage cards.
-
 ### 4) Listen to events
 
 ```js
@@ -72,13 +69,13 @@ dashboard.addEventListener("dashboard-updated", (event) => {
 
 ## Running the Demos
 
-### Native demo (plain Web Components)
+### Demo 
 
 1. Open `index.html` with Live Server.
 2. Use UI controls to add cards and test actions.
 3. Inspect console for emitted events.
 
-### React demo (separate integration)
+### React demo
 
 1. Open `react-integration/index.html` with Live Server.
 2. This page loads React from CDN and mounts `<smart-dashboard>`.
@@ -136,7 +133,7 @@ Internal bubbling events:
 
 ## Theming
 
-Customize the dashboard via CSS variables:
+Customize the dashboard:
 
 ```css
 smart-dashboard {
@@ -156,13 +153,6 @@ smart-dashboard {
   --dg-grid-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 ```
-
-## Software Design Notes
-
-- **Modular structure:** each component has a clear responsibility
-- **Reusable by design:** same core works in native pages and React hosts
-- **Decoupled communication:** events instead of direct parent-child dependencies
-- **Maintainable styling:** isolated component styles + shared variable contract
 
 ## Project Structure
 

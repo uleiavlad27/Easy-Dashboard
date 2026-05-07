@@ -10,7 +10,7 @@ smartDashboardTemplate.innerHTML = `
   <section class="shell">
     <header class="toolbar">
       <div>
-        <h2 class="title" data-ref="title">Smart Dashboard</h2>
+        <h2 class="title" data-ref="title">Dashboard component</h2>
         <p class="meta" data-ref="meta">0 cards</p>
       </div>
       <button type="button" data-action="add">Add</button>
@@ -67,7 +67,7 @@ export class SmartDashboard extends HTMLElement {
 
   attributeChangedCallback(name, _oldValue, value) {
     if (name === "title" && this.isConnected) {
-      this._title.textContent = value || "Smart Dashboard";
+      this._title.textContent = value || "Dashboard component";
     }
   }
 
