@@ -21,7 +21,7 @@ dashboardCardTemplate.innerHTML = `
 
 export class DashboardCard extends HTMLElement {
   static get observedAttributes() {
-    return ["card-id", "title", "subtitle", "content", "footer"];
+    return ["card-id", "title", "subtitle", "content", "footer", "pinned"];
   }
 
   constructor() {
@@ -80,6 +80,7 @@ export class DashboardCard extends HTMLElement {
       subtitle: this.getAttribute("subtitle") || "",
       content: this.getAttribute("content") || "",
       footer: this.getAttribute("footer") || "",
+      pinned: this.hasAttribute("pinned"),
     };
   }
 
@@ -92,6 +93,11 @@ export class DashboardCard extends HTMLElement {
     this.setAttribute("subtitle", safe.subtitle || "");
     this.setAttribute("content", safe.content || "");
     this.setAttribute("footer", safe.footer || "");
+    if (safe.pinned) {
+      this.setAttribute("pinned", "");
+    } else {
+      this.removeAttribute("pinned");
+    }
   }
 
   _onAction(event) {

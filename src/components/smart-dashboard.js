@@ -74,7 +74,7 @@ export class SmartDashboard extends HTMLElement {
   addCard(data) {
     const card = this._normalizeCard(data);
     this._cards.set(card.id, card);
-    this._grid.append(this._createCardElement(card));
+    this._renderCards();
     this._emitCardEvent("dashboard-card-added", card);
     this._syncState("add", card);
     return card;
@@ -88,10 +88,7 @@ export class SmartDashboard extends HTMLElement {
     }
     const updated = this._normalizeCard({ ...current, ...updates, id });
     this._cards.set(id, updated);
-    const el = this._grid.querySelector(`dashboard-card[card-id='${CSS.escape(id)}']`);
-    if (el) {
-      el.data = updated;
-    }
+    this._renderCards();
     this._emitCardEvent("dashboard-card-updated", updated);
     this._syncState("update", updated);
     return true;
@@ -104,10 +101,7 @@ export class SmartDashboard extends HTMLElement {
       return false;
     }
     this._cards.delete(id);
-    const el = this._grid.querySelector(`dashboard-card[card-id='${CSS.escape(id)}']`);
-    if (el) {
-      el.remove();
-    }
+    this._renderCards();
     this._emitCardEvent("dashboard-card-removed", existing);
     this._syncState("remove", existing);
     return true;
@@ -146,6 +140,10 @@ export class SmartDashboard extends HTMLElement {
     }
     if (action === "delete") {
       this.removeCard(cardId);
+    } else if (action === "pin") {
+      this.updateCard(cardId, { pinned: true });
+    } else if (action === "unpin") {
+      this.updateCard(cardId, { pinned: false });
     }
     if (action === "edit") {
       this.openEditModal(cardId);
@@ -184,6 +182,38 @@ export class SmartDashboard extends HTMLElement {
     return el;
   }
 
+  _renderCards() {
+    if (!this._grid) {
+      return;
+    }
+
+    const orderedCards = this._getOrderedCards();
+    const fragment = document.createDocumentFragment();
+
+    orderedCards.forEach((card) => {
+      const existing = this._grid.querySelector(`dashboard-card[card-id='${CSS.escape(card.id)}']`);
+      const el = existing || this._createCardElement(card);
+      if (existing) {
+        existing.data = card;
+      }
+      fragment.append(el);
+    });
+
+    this._grid.replaceChildren(fragment);
+  }
+
+  _getOrderedCards() {
+    const entries = Array.from(this._cards.entries()).map(([id, card], index) => ({ id, card, index }));
+    entries.sort((left, right) => {
+      const pinDiff = Number(Boolean(right.card.pinned)) - Number(Boolean(left.card.pinned));
+      if (pinDiff !== 0) {
+        return pinDiff;
+      }
+      return left.index - right.index;
+    });
+    return entries.map((entry) => entry.card);
+  }
+
   _normalizeCard(payload = {}) {
     const id = String(payload.id || "").trim() || `card-${Math.random().toString(36).slice(2, 10)}`;
     const title = String(payload.title || "").trim() || "Untitled Card";
@@ -193,6 +223,7 @@ export class SmartDashboard extends HTMLElement {
       subtitle: String(payload.subtitle || "").trim(),
       content: String(payload.content || "").trim(),
       footer: String(payload.footer || "").trim(),
+      pinned: Boolean(payload.pinned),
     };
   }
 
@@ -208,7 +239,6 @@ export class SmartDashboard extends HTMLElement {
       }
       parsed.forEach((item) => this.addCard(item));
     } catch {
-      // Ignore malformed cards payload.
     }
   }
 

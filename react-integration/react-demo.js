@@ -13,17 +13,17 @@ function ReactDashboardDemo() {
 
     const seed = [
       {
-        title: "Release Health",
-        subtitle: "Product",
-        content: "2 blockers pending validation.",
-        footer: "Synced 5 min ago",
-      },
-      {
-        title: "Support Queue",
-        subtitle: "Customer Success",
-        content: "11 tickets awaiting assignment.",
-        footer: "Shift A",
-      },
+    title: "Tema",
+    subtitle: "Acasa",
+    content: "mate",
+    footer: "romana",
+  },
+  {
+    title: "of",
+    subtitle: "of",
+    content: "of",
+    footer: "of",
+  },
     ];
 
     if (el.getCardsData().length === 0) {
